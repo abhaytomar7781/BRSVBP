@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Technical Club T-Shirt</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>Technical Club T-Shirt</h1>
+
+<div class="product-container">
+
+<!-- LEFT SIDE IMAGE SECTION -->
+
+<div class="gallery">
+
+<div class="slider">
+
+    <img id="mainImage" src="images/front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
+
+    <button class="prev" onclick="prevImage()">❮</button>
+    <button class="next" onclick="nextImage()">❯</button>
+
+</div>
+
+<div class="thumbnails">
+
+<img src="images/front.png" onclick="changeImage('images/front.png')">
+
+<img src="images/front right.png" onclick="changeImage('images/front right.png')">
+
+<img src="images/back.png" onclick="changeImage('images/back.png')">
+
+<img src="images/combined.png" onclick="changeImage('images/combined.png')">
+
+<img src="images/back view.png" onclick="changeImage('images/back view.png')">
+
+<img src="images/logo.png" onclick="changeImage('images/logo.png')">
+
+</div>
+
+</div>
+
+<!-- RIGHT SIDE DETAILS -->
+
+<div class="details">
+
+<h2>Technical Club T-Shirt</h2>
+
+<h3>₹350</h3>
+
+<p>
+Premium Quality | 100% Cotton | Unisex
+</p>
+
+<h4>Available Sizes</h4>
+
+<div class="sizes">
+
+<button>S</button>
+<button>M</button>
+<button>L</button>
+<button>XL</button>
+<button>XXL</button>
+
+</div>
+
+<ul>
+
+<li>Comfortable Fit</li>
+
+<li>High Quality Print</li>
+
+<li>Limited Edition</li>
+
+</ul>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform">
+
+<div class="mobile-order">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform" target="_blank">
+
+<button class="order">
+🛒 ORDER NOW
+</button>
+
+</a>
+
+</div>    
+
+<!-- <button class="order">
+ORDER NOW
+</button> -->
+
+</a>
+
+<p class="secure">
+🔒 Secure Order Form (Google Forms)
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+
+function changeImage(image){
+
+document.getElementById("mainImage").src=image;
+
+}
+
+</script>
+
+<script>
+
+let images = [
+"images/front.png",
+"images/front right.png",
+"images/back.png",
+"images/combined.png",
+"images/back view.png",
+"images/logo.png"
+];
+
+let current = 0;
+
+
+function nextImage(){
+
+current++;
+
+if(current >= images.length){
+current = 0;
+}
+
+document.getElementById("mainImage").src = images[current];
+
+}
+
+
+
+function prevImage(){
+
+current--;
+
+if(current < 0){
+current = images.length-1;
+}
+
+document.getElementById("mainImage").src = images[current];
+
+}
+
+let startX = 0;
+let endX = 0;
+
+
+function touchStart(event){
+
+    startX = event.changedTouches[0].screenX;
+
+}
+
+
+function touchEnd(event){
+
+    endX = event.changedTouches[0].screenX;
+
+
+    if(startX - endX > 50){
+
+        nextImage();
+
+    }
+
+
+    if(endX - startX > 50){
+
+        prevImage();
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
