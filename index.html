@@ -197,6 +197,26 @@ function touchEnd(event){
     }
 
 }
+    function selectSize(button){
+
+let buttons = document.querySelectorAll(".sizes button");
+
+buttons.forEach(btn => {
+
+btn.style.background="white";
+btn.style.color="black";
+
+});
+
+
+button.style.background="black";
+button.style.color="white";
+
+
+document.getElementById("selectedSize").innerHTML =
+"Selected Size: " + button.innerHTML;
+
+}
 
 </script>
 
