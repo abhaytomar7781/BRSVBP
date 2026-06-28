@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-    
+
 <body>
 
 <div class="header">
 
-<img src="top.png" class="club-logo">
+<img src="images/logo.png" class="club-logo">
 
 <h1>Technical Club Store</h1>
 
@@ -31,7 +31,7 @@
 <div class="slider">
     <!-- <img id="mainImage" src="images/front.png"> -->
 
-    <img id="mainImage" src="front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
+    <img id="mainImage" src="images/front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
 
     <button class="prev" onclick="prevImage()">❮</button>
     <button class="next" onclick="nextImage()">❯</button>
@@ -40,17 +40,17 @@
 
 <div class="thumbnails">
 
-<img id="thumb0" src="front.png" onclick="changeImage(0)">
+<img id="thumb0" src="images/front.png" onclick="changeImage(0)">
 
-<img id="thumb1" src="front right.png" onclick="changeImage(1)">
+<img id="thumb1" src="images/front right.png" onclick="changeImage(1)">
 
-<img id="thumb2" src="back.png" onclick="changeImage(2)">
+<img id="thumb2" src="images/back.png" onclick="changeImage(2)">
 
-<img id="thumb3" src="combined.png" onclick="changeImage(3)">
+<img id="thumb3" src="images/combined.png" onclick="changeImage(3)">
 
-<img id="thumb4" src="back view.png" onclick="changeImage(4)">
+<img id="thumb4" src="images/back view.png" onclick="changeImage(4)">
 
-<img id="thumb5" src="logo.png" onclick="changeImage(5)">
+<img id="thumb5" src="images/logo.png" onclick="changeImage(5)">
 
 </div>
 
@@ -145,8 +145,10 @@ ORDER NOW
 </div>
 
 </div>
-    <script>
-    let images = [
+
+<script>
+
+let images = [
 "front.png",
 "front right.png",
 "back.png",
@@ -159,6 +161,8 @@ ORDER NOW
 let current = 0;
 
 
+// Change image by clicking thumbnail
+
 function changeImage(index){
 
 current = index;
@@ -170,6 +174,7 @@ updateThumbnail();
 }
 
 
+// Next image
 
 function nextImage(){
 
@@ -185,12 +190,14 @@ changeImage(current);
 
 
 
+// Previous image
+
 function prevImage(){
 
 current--;
 
 if(current < 0){
-current = images.length-1;
+current = images.length - 1;
 }
 
 changeImage(current);
@@ -198,6 +205,46 @@ changeImage(current);
 }
 
 
+
+// Swipe effect
+
+let startX = 0;
+
+
+let mainImage = document.getElementById("mainImage");
+
+
+mainImage.addEventListener("touchstart", function(e){
+
+startX = e.touches[0].clientX;
+
+});
+
+
+mainImage.addEventListener("touchend", function(e){
+
+let endX = e.changedTouches[0].clientX;
+
+
+if(startX - endX > 50){
+
+nextImage();
+
+}
+
+
+if(endX - startX > 50){
+
+prevImage();
+
+}
+
+
+});
+
+
+
+// Thumbnail highlight
 
 function updateThumbnail(){
 
@@ -218,6 +265,7 @@ if(selected){
 
 selected.classList.add("active");
 
+
 selected.scrollIntoView({
 
 behavior:"smooth",
@@ -229,141 +277,50 @@ inline:"center"
 }
 
 }
-    </script>
-<!-- changed -->
-<script>
-
-
-function changeImage(index){
-
-current = index;
-
-document.getElementById("mainImage").src = images[current];
-
-updateThumbnail();
-
-}
-
-</script>
-
-<script>
-
-let images = [
-"front.png",
-"front right.png",
-"back.png",
-"combined.png",
-"back view.png",
-"logo.png"
-];
-
-let current = 0;
-
-
-function nextImage(){
-
-current++;
-
-if(current >= images.length){
-current = 0;
-}
-
-let img = document.getElementById("mainImage");
-
-img.style.opacity = "0";
-
-setTimeout(()=>{
-
-img.src = images[current];
-
-img.style.opacity = "1";
-
-},200);
-
-}
 
 
 
-function prevImage(){
 
-current--;
+// Size selection
 
-if(current < 0){
-current = images.length-1;
-}
-
-let img = document.getElementById("mainImage");
-
-img.style.opacity = "0";
-
-setTimeout(()=>{
-
-img.src = images[current];
-
-img.style.opacity = "1";
-
-},200);
-
-}
-
-let startX = 0;
-let endX = 0;
-
-
-function touchStart(event){
-
-    startX = event.changedTouches[0].screenX;
-
-}
-
-
-function touchEnd(event){
-
-    endX = event.changedTouches[0].screenX;
-
-
-    if(startX - endX > 50){
-
-        nextImage();
-
-    }
-
-
-    if(endX - startX > 50){
-
-        prevImage();
-
-    }
-
-}
 function selectSize(button){
 
 let buttons = document.querySelectorAll(".sizes button");
 
-buttons.forEach(btn => {
+
+buttons.forEach(btn=>{
 
 btn.style.background="white";
+
 btn.style.color="black";
 
 });
 
 
 button.style.background="black";
+
 button.style.color="white";
+
 
 
 document.getElementById("selectedSize").innerHTML =
 "Selected Size: " + button.innerHTML;
 
+
+
 let link = document.getElementById("orderLink");
+
 
 link.href =
 "https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform?usp=pp_url&entry.1878091491="
 + button.innerHTML;
 
+
 }
 
+
 </script>
+
 </body>
 
 </html>
