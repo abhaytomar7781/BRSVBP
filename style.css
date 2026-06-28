@@ -576,9 +576,9 @@ color:white;
 
 .club-logo {
 
-width:1200px;
+/* width:1200px;
 
-height:1000px;
+height:1000px; */
 
 object-fit:contain;
 
@@ -586,6 +586,11 @@ border-radius:50%;
 
 margin-bottom:0px;
 
+}
+
+.logo{
+width:120px;
+height:auto;
 }
 
 
