@@ -150,7 +150,7 @@ ORDER NOW
 
 <button onclick="prevPopup()">‹</button>
 
-<img id="popupImage"> onclick="event.stopPropagation()">
+<img id="popupImage"> 
 
 <button onclick="nextPopup()">›</button>
 
@@ -342,15 +342,17 @@ document.getElementById("imagePopup").style.display="flex";
 
 }
 
-
-
 function closeImage(){
 
-document.getElementById("imagePopup").style.display="none";
+let popup = document.getElementById("imagePopup");
+
+popup.style.display = "none";
+document.getElementById("popupImage").onclick = function(event){
+event.stopPropagation();
 
 }
 
-
+}
 
 function nextPopup(){
 
