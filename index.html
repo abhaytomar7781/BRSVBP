@@ -332,13 +332,15 @@ link.href =
 
 function openImage(){
 
-popupCurrent = current;
+let main = document.getElementById("mainImage");
 
-document.getElementById("popupImage").src =
-images[popupCurrent];
+let popup = document.getElementById("imagePopup");
 
+let popupImg = document.getElementById("popupImage");
 
-document.getElementById("imagePopup").style.display="flex";
+popupImg.src = main.src;
+
+popup.style.display="flex";
 
 }
 
