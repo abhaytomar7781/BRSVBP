@@ -792,3 +792,11 @@ text-align:center;
 .thumbnails{
     overflow:hidden;
 }
+body{
+    overflow-x:hidden;
+}
+.thumbnails img{
+    user-select:none;
+    -webkit-user-drag:none;
+    touch-action:none;
+}
