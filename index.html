@@ -149,9 +149,13 @@ ORDER NOW
 <script>
 
 
-function changeImage(image){
+function changeImage(index){
 
-document.getElementById("mainImage").src=image;
+current = index;
+
+document.getElementById("mainImage").src = images[current];
+
+updateThumbnail();
 
 }
 
@@ -337,6 +341,39 @@ mainImage.src = images[current];
 
 
 });
+
+    function updateThumbnail(){
+
+let thumbs = document.querySelectorAll(".thumbnails img");
+
+thumbs.forEach(function(img){
+
+img.classList.remove("active");
+
+});
+
+
+let selected = document.getElementById("thumb"+current);
+
+
+if(selected){
+
+selected.classList.add("active");
+
+
+selected.scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest",
+
+inline:"center"
+
+});
+
+}
+
+}
 
 
 </script>    
