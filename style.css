@@ -790,13 +790,36 @@ text-align:center;
     -webkit-user-drag: none;
 }
 .thumbnails{
-    overflow:hidden;
-}
-body{
-    overflow-x:hidden;
+
+display:flex;
+
+gap:15px;
+
+overflow-x:auto;
+
+overflow-y:hidden;
+
+scroll-behavior:smooth;
+
+touch-action:pan-x;
+
 }
 .thumbnails img{
-    user-select:none;
-    -webkit-user-drag:none;
-    touch-action:none;
+
+width:80px;
+
+height:80px;
+
+object-fit:cover;
+
+flex-shrink:0;
+
+user-select:none;
+
+-webkit-user-drag:none;
+
+}
+
+body{
+    overflow-x:hidden;
 }
