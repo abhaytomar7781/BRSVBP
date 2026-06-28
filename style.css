@@ -780,3 +780,15 @@ border-radius:8px;
 .gallery{
 text-align:center;
 }
+.thumbnails img{
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: pointer;
+}
+#mainImage{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.thumbnails{
+    overflow:hidden;
+}
