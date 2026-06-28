@@ -31,7 +31,7 @@
 <div class="slider">
     <!-- <img id="mainImage" src="images/front.png"> -->
 
-    <img id="mainImage" src="front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
+    <img id="mainImage" src="front.png" onclick="openImage()"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
 
     <button class="prev" onclick="prevImage()">❮</button>
     <button class="next" onclick="nextImage()">❯</button>
@@ -143,6 +143,11 @@ ORDER NOW
 </p>
 
 </div>
+
+</div>
+    <div id="imagePopup" onclick="closeImage()">
+
+<img id="popupImage">
 
 </div>
 
@@ -315,6 +320,29 @@ link.href =
 "https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform?usp=pp_url&entry.1878091491="
 + button.innerHTML;
 
+
+}
+    function openImage(){
+
+let main = document.getElementById("mainImage");
+
+let popup = document.getElementById("imagePopup");
+
+let popupImg = document.getElementById("popupImage");
+
+
+popupImg.src = main.src;
+
+
+popup.style.display="flex";
+
+}
+
+
+
+function closeImage(){
+
+document.getElementById("imagePopup").style.display="none";
 
 }
 
