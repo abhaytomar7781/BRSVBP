@@ -842,6 +842,8 @@ white-space:nowrap;
 
 touch-action:pan-x;
 
+flex-wrap:nowrap;
+
 -webkit-overflow-scrolling:touch;
 
 }
