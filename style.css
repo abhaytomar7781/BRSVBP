@@ -752,6 +752,10 @@ max-height:90%;
 
 object-fit:contain;
 
+margin:auto;
+
+display:block;
+
 }
 .thumbnails{
 
