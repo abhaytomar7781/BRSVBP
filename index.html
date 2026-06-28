@@ -12,7 +12,15 @@
 
 <body>
 
-<h1>Technical Club T-Shirt</h1>
+<div class="header">
+
+<img src="images/logo.png" class="club-logo">
+
+<h1>Technical Club Store</h1>
+
+<p>Official Technical Club Merchandise</p>
+
+</div>
 
 <div class="product-container">
 
@@ -21,8 +29,9 @@
 <div class="gallery">
 
 <div class="slider">
-    <!-- <img id="mainImage" src="front.png"> -->
-    <img id="mainImage" src="front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
+    <!-- <img id="mainImage" src="images/front.png"> -->
+
+    <img id="mainImage" src="images/front.png"ontouchstart="touchStart(event)"ontouchend="touchEnd(event)">
 
     <button class="prev" onclick="prevImage()">❮</button>
     <button class="next" onclick="nextImage()">❯</button>
@@ -31,17 +40,17 @@
 
 <div class="thumbnails">
 
-<img src="front.png" onclick="changeImage('front.png')">
+<img src="images/front.png" onclick="changeImage('images/front.png')">
 
-<img src="front right.png" onclick="changeImage('front right.png')">
+<img src="images/front right.png" onclick="changeImage('images/front right.png')">
 
-<img src="back.png" onclick="changeImage('back.png')">
+<img src="images/back.png" onclick="changeImage('images/back.png')">
 
-<img src="combined.png" onclick="changeImage('combined.png')">
+<img src="images/combined.png" onclick="changeImage('images/combined.png')">
 
-<img src="back view.png" onclick="changeImage('back view.png')">
+<img src="images/back view.png" onclick="changeImage('images/back view.png')">
 
-<img src="logo.png" onclick="changeImage('logo.png')">
+<img src="images/logo.png" onclick="changeImage('images/logo.png')">
 
 </div>
 
@@ -53,7 +62,19 @@
 
 <h2>Technical Club T-Shirt</h2>
 
-<h3>₹350</h3>
+<div class="price-box">
+
+<h3 class="price">₹350</h3>
+
+<p class="stock">
+🔥 Limited Stock Available
+</p>
+
+<p class="offer">
+Technical Club Edition • Premium Quality
+</p>
+
+</div>
 
 <p>
 Premium Quality | 100% Cotton | Unisex
@@ -76,23 +97,32 @@ No size selected
 
 </div>
 
+<div class="product-info">
+
+<h3>Product Details 👕</h3>
+
 <ul>
 
-<li>Comfortable Fit</li>
+<li>✅ Premium Cotton Fabric</li>
 
-<li>High Quality Print</li>
+<li>✅ Comfortable Unisex Fit</li>
 
-<li>Limited Edition</li>
+<li>✅ High Quality Print</li>
+
+<li>✅ Technical Club Edition</li>
+
+<li>✅ Limited Stock Available</li>
 
 </ul>
+
+</div>
+
 
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform">
 
 <div class="mobile-order">
 
-<a id="orderLink" 
-href="https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform?usp=pp_url&entry.1878091491="
-target="_blank">
+<a id="orderLink" href="https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform?usp=pp_url&entry.1878091491="target="_blank">
 
 <button class="order">
 🛒 ORDER NOW
@@ -130,12 +160,12 @@ document.getElementById("mainImage").src=image;
 <script>
 
 let images = [
-"front.png",
-"front right.png",
-"back.png",
-"combined.png",
-"back view.png",
-"logo.png"
+"images/front.png",
+"images/front right.png",
+"images/back.png",
+"images/combined.png",
+"images/back view.png",
+"images/logo.png"
 ];
 
 let current = 0;
@@ -149,7 +179,17 @@ if(current >= images.length){
 current = 0;
 }
 
-document.getElementById("mainImage").src = images[current];
+let img = document.getElementById("mainImage");
+
+img.style.opacity = "0";
+
+setTimeout(()=>{
+
+img.src = images[current];
+
+img.style.opacity = "1";
+
+},200);
 
 }
 
@@ -163,7 +203,17 @@ if(current < 0){
 current = images.length-1;
 }
 
-document.getElementById("mainImage").src = images[current];
+let img = document.getElementById("mainImage");
+
+img.style.opacity = "0";
+
+setTimeout(()=>{
+
+img.src = images[current];
+
+img.style.opacity = "1";
+
+},200);
 
 }
 
@@ -197,7 +247,7 @@ function touchEnd(event){
     }
 
 }
-    function selectSize(button){
+function selectSize(button){
 
 let buttons = document.querySelectorAll(".sizes button");
 
@@ -215,6 +265,12 @@ button.style.color="white";
 
 document.getElementById("selectedSize").innerHTML =
 "Selected Size: " + button.innerHTML;
+
+let link = document.getElementById("orderLink");
+
+link.href =
+"https://docs.google.com/forms/d/e/1FAIpQLSeL-eMxQXsrxRAswXklRhCV0-KovZaPCBf8AyvXp7OxoxwvGA/viewform?usp=pp_url&entry.1878091491="
++ button.innerHTML;
 
 }
 
