@@ -146,11 +146,11 @@ ORDER NOW
 
 </div>
    
-    <div id="imagePopup">
+    <div id="imagePopup"> onclick="closeImage()">
 
 <button onclick="prevPopup()">‹</button>
 
-<img id="popupImage">
+<img id="popupImage"> onclick="event.stopPropagation()">
 
 <button onclick="nextPopup()">›</button>
 
