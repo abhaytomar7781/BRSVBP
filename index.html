@@ -145,9 +145,14 @@ ORDER NOW
 </div>
 
 </div>
-    <div id="imagePopup" onclick="closeImage()">
+   
+    <div id="imagePopup">
+
+<button onclick="prevPopup()">‹</button>
 
 <img id="popupImage">
+
+<button onclick="nextPopup()">›</button>
 
 </div>
 
@@ -322,19 +327,18 @@ link.href =
 
 
 }
-    function openImage(){
-
-let main = document.getElementById("mainImage");
-
-let popup = document.getElementById("imagePopup");
-
-let popupImg = document.getElementById("popupImage");
+ let popupCurrent = 0;
 
 
-popupImg.src = main.src;
+function openImage(){
+
+popupCurrent = current;
+
+document.getElementById("popupImage").src =
+images[popupCurrent];
 
 
-popup.style.display="flex";
+document.getElementById("imagePopup").style.display="flex";
 
 }
 
@@ -345,6 +349,73 @@ function closeImage(){
 document.getElementById("imagePopup").style.display="none";
 
 }
+
+
+
+function nextPopup(){
+
+popupCurrent++;
+
+if(popupCurrent >= images.length){
+
+popupCurrent = 0;
+
+}
+
+
+document.getElementById("popupImage").src =
+images[popupCurrent];
+
+}
+
+
+
+function prevPopup(){
+
+popupCurrent--;
+
+if(popupCurrent < 0){
+
+popupCurrent = images.length-1;
+
+}
+
+
+document.getElementById("popupImage").src =
+images[popupCurrent];
+
+}
+    let popupStartX = 0;
+
+
+document.getElementById("popupImage")
+.addEventListener("touchstart",function(e){
+
+popupStartX = e.touches[0].clientX;
+
+});
+
+
+document.getElementById("popupImage")
+.addEventListener("touchend",function(e){
+
+let popupEndX = e.changedTouches[0].clientX;
+
+
+if(popupStartX - popupEndX > 50){
+
+nextPopup();
+
+}
+
+
+if(popupEndX - popupStartX > 50){
+
+prevPopup();
+
+}
+
+});
 
 
 </script>
